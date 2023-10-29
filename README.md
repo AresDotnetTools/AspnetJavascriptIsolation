@@ -14,9 +14,9 @@ Install-Package AspnetJavascriptIsolation
 
 ![Project](/doc/Project.png)
 
-![Source](/doc/Source.png)
-
 ![Javascript](/doc/Javascript.png)
+
+![Source](/doc/Source.png)
 
 ### MVC or Razor Pages
 

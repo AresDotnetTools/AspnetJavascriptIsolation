@@ -12,6 +12,7 @@
 		  1.0.0.0 - Initial release
 	  </PackageReleaseNotes>
 	  <PackageId>AspnetJavascriptIsolation</PackageId>
+	  <PackageProjectUrl>https://github.com/AresDotnetTools/AspnetJavascriptIsolation</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

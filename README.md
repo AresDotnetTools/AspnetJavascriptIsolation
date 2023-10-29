@@ -12,6 +12,10 @@ Install-Package AspnetJavascriptIsolation
 
 ## Usage
 
+![Project](/doc/Project.png)
+
+![Source](/doc/Source.png)
+
 ### MVC or Razor Pages
 
 In your Program.cs before builder.Build(), add the following line:

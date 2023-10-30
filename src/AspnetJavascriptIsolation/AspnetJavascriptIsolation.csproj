@@ -4,11 +4,12 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <Version>1.0.0.0</Version>
+	  <Version>1.0.1.0</Version>
 	  <IncludeSymbols>true</IncludeSymbols>
 	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
 	  <EmbedUntrackedSources>true</EmbedUntrackedSources>
 	  <PackageReleaseNotes>
+		  1.0.1.0 - Fix RootPath
 		  1.0.0.0 - Initial release
 	  </PackageReleaseNotes>
 	  <PackageId>AspnetJavascriptIsolation</PackageId>

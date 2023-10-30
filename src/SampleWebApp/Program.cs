@@ -5,7 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages(); 
 
-builder.AddJavascriptIsolation(); 
+builder.AddJavascriptIsolation(options =>
+{
+	options.CacheDurationInHours = 0;
+	options.RootPath = builder.Environment.ContentRootPath;
+}); 
 
 var app = builder.Build();
 

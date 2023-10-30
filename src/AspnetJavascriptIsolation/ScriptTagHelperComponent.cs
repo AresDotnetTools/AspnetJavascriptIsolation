@@ -30,9 +30,8 @@ internal class ScriptTagHelperComponent : TagHelperComponent
 		{
 			return;
 		}
-		var currentFolder = System.IO.Path.GetDirectoryName(typeof(StartupExtensions).Assembly.Location)!;
 		var jsFileName = $"{pageName}".TrimStart('/');
-		jsFileName = Path.Combine(currentFolder, _globalSettings.RootFolder, $"{jsFileName}.cshtml.js");
+		jsFileName = Path.Combine(_globalSettings.RootPath, _globalSettings.RootFolder, $"{jsFileName}.cshtml.js");
 		if (!System.IO.File.Exists(jsFileName))
 		{
 			return;

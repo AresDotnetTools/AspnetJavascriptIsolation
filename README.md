@@ -10,6 +10,8 @@ Install the package from NuGet:
 Install-Package AspnetJavascriptIsolation
 ```
 
+[![NuGet](https://img.shields.io/nuget/v/AspnetJavascriptIsolation.svg)](https://www.nuget.org/packages/AspnetJavascriptIsolation/)
+
 ## Usage
 
 ![Project](/doc/Project.png)

@@ -24,8 +24,8 @@ internal class ScriptTagHelperComponent : TagHelperComponent
 		if (!context.TagName.Equals("body", StringComparison.InvariantCultureIgnoreCase))
 		{
 			return;
-		}
-		var pageName = _httpContextAccessor.HttpContext!.GetRouteValue("page");
+        }
+        var pageName = _httpContextAccessor.HttpContext!.GetRouteValue("page");
 		if (pageName is null)
 		{
 			return;

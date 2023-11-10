@@ -22,19 +22,13 @@ Install-Package AspnetJavascriptIsolation
 
 ### MVC or Razor Pages
 
-In your csproj, add the following <ItemGroup>:
+In your csproj, add the following ItemGroup :
 
 ```xml
 <ItemGroup>
-	<Content Include="Pages\**\*.cshtml.js" CopyToPublishDirectory="Always">
-		<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	</Content>
-</ItemGroup>
-
-<ItemGroup>
-	<_JsIsolation Include="Pages\**\*.cshtml.js"/>
+	<_JsIsolation Include="Pages\**\*.cshtml.js" />
 	<DotNetPublishFiles Include="@(_JsIsolation)">
-		<DestinationRelativePath>Pages\%(RecursiveDir)\%(Filename)%(Extension)</DestinationRelativePath>
+		<DestinationRelativePath>%(Identity)</DestinationRelativePath>
 	</DotNetPublishFiles>
 </ItemGroup>
 ```

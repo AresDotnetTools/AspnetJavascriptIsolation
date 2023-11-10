@@ -6,20 +6,14 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
-	<ItemGroup>
-		<Content Include="Pages\**\*.cshtml.js" CopyToPublishDirectory="Always">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
 
 	<ItemGroup>
-		<_JsIsolation Include="Pages\**\*.cshtml.js"/>
+		<_JsIsolation Include="Pages\**\*.cshtml.js" />
 		<DotNetPublishFiles Include="@(_JsIsolation)">
-			<DestinationRelativePath>Pages\%(RecursiveDir)\%(Filename)%(Extension)</DestinationRelativePath>
+			<DestinationRelativePath>%(Identity)</DestinationRelativePath>
 		</DotNetPublishFiles>
 	</ItemGroup>
-
+	
 	<ItemGroup>
 		<ProjectReference Include="..\AspnetJavascriptIsolation\AspnetJavascriptIsolation.csproj" />
 	</ItemGroup>

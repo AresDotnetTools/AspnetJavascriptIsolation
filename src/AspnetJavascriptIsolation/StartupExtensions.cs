@@ -51,7 +51,7 @@ public static class StartupExtensions
 				}
 			}
 
-			page = page.Replace(".js", "").Replace("/", "\\");
+			page = page.Replace(".js", "").Replace("/", "\\"); 
 			var jsFileName = Path.Combine(globalSettings.RootPath, globalSettings.RootFolder, $"{page}.cshtml.js");
 			if (!File.Exists(jsFileName))
 			{
@@ -61,14 +61,14 @@ public static class StartupExtensions
 
 			if (date is not null)
 			{
-				ctx.Response.Headers.Add("Cache-Control", $"public, max-age={globalSettings.CacheDurationInHours * 3600}");
-				ctx.Response.Headers.Add("Expires", date.Value.ToString("R"));
-				ctx.Response.Headers.Add("Last-Modified", date.Value.ToString("R"));
+				ctx.Response.Headers["Cache-Control"] = $"public, max-age={globalSettings.CacheDurationInHours * 3600}";
+				ctx.Response.Headers["Expires"] = date.Value.ToString("R");
+				ctx.Response.Headers["Last-Modified"] = date.Value.ToString("R");
 			}
 			else
 			{
 				// Ne pas mettre de cache
-				ctx.Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
+				ctx.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
 			}
 
 			var content = File.ReadAllText(jsFileName);

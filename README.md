@@ -10,6 +10,8 @@ Install the package from NuGet:
 Install-Package AspnetJavascriptIsolation
 ```
 
+[![NuGet](https://img.shields.io/nuget/v/AspnetJavascriptIsolation.svg)](https://www.nuget.org/packages/AspnetJavascriptIsolation/)
+
 ## Usage
 
 ![Project](/doc/Project.png)
@@ -19,6 +21,19 @@ Install-Package AspnetJavascriptIsolation
 ![Source](/doc/Source.png)
 
 ### MVC or Razor Pages
+
+In your csproj, add the following ItemGroup :
+
+```xml
+<ItemGroup>
+	<_JsIsolation Include="Pages\**\*.cshtml.js" />
+	<DotNetPublishFiles Include="@(_JsIsolation)">
+		<DestinationRelativePath>%(Identity)</DestinationRelativePath>
+	</DotNetPublishFiles>
+</ItemGroup>
+```
+
+**Note:** If you are using MVC, replace "Pages" by "Views" in the above code.
 
 In your Program.cs before builder.Build(), add the following line:
 

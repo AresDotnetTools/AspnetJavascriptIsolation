@@ -8,6 +8,7 @@ builder.Services.AddRazorPages();
 builder.AddJavascriptIsolation(options =>
 {
 	options.CacheDurationInHours = 0;
+	var rootPath = System.IO.Path.GetDirectoryName(typeof(Program).Assembly.Location);
 	options.RootPath = builder.Environment.ContentRootPath;
 }); 
 

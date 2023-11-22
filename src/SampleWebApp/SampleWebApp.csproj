@@ -1,29 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Pages\Index.cshtml.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Pages\Index.cshtml.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AspnetJavascriptIsolation\AspnetJavascriptIsolation.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Pages\Index.cshtml.cs">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<_JsIsolation Include="Pages\**\*.cshtml.js" />
+		<DotNetPublishFiles Include="@(_JsIsolation)">
+			<DestinationRelativePath>%(Identity)</DestinationRelativePath>
+		</DotNetPublishFiles>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\AspnetJavascriptIsolation\AspnetJavascriptIsolation.csproj" />
+	</ItemGroup>
 
 </Project>

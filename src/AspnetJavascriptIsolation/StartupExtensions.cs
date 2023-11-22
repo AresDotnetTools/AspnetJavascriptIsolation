@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace AspnetJavascriptIsolation;
 
@@ -27,12 +28,14 @@ public static class StartupExtensions
 	public static WebApplication UseJavascriptIsolation(this WebApplication app)
 	{
 		var globalSettings = app.Services.GetRequiredService<JavascriptIsolationOptions>();
+		var logger = app.Services.GetRequiredService<ILogger<ScriptTagHelperComponent>>();
 		var pattern = $"/{globalSettings.RouteHandler}/{{*page}}";
 
 		var @delegate = (HttpContext ctx, string page) =>
 		{
 			if (string.IsNullOrWhiteSpace(page))
 			{
+				logger.LogWarning("No page specified");
 				return Results.Content(string.Empty, "text/javascript");
 			}
 
@@ -52,7 +55,8 @@ public static class StartupExtensions
 			var jsFileName = Path.Combine(globalSettings.RootPath, globalSettings.RootFolder, $"{page}.cshtml.js");
 			if (!File.Exists(jsFileName))
 			{
-				return Results.Content(string.Empty, "text/javascript");
+                logger.LogWarning($"js file name not found {jsFileName}", jsFileName);
+                return Results.Content(string.Empty, "text/javascript");
 			}
 
 			if (date is not null)
